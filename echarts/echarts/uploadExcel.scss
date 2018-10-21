@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#upload-container {
+  border: 1px solid #efefef;
+  width: 500px;
+  height: 500px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  cursor: pointer;
+  &:hover {
+    color: #333;
+    border-color: #ccc;
+  }
+}
