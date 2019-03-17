@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Title</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <style>
+    .container {
+      height: 500px;
+      width: 0.1%;
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class='container'>
+  <button id='btn1'>打开电脑QQ</button>
+  <button id='btn2'>打开手机QQ</button>
+</div>
+</body>
+<script>
+  const QQ = '869103451';
+  
+  let btn = document.getElementById('btn1');
+  let btn2 = document.getElementById('btn2');
+  
+  btn.onclick = () => {
+    let url = `tencent://message/?uin=${QQ}&Site=&menu=yes`;
+    openQQ(url);
+  };
+  btn2.onclick = () => {
+    let url = `mqqwpa://im/chat?chat_type=wpa&uin=${QQ}&version=1&src_type=web&web_src=oicqzone.com`;
+    openQQ(url);
+  };
+  
+  function openQQ(url) {
+    let iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = url;
+    document.body.appendChild(iframe);
+  }
+
+  try{
+    if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+      btn.style.display = 'none';
+    }else{
+      btn2.style.display = 'none';
+    }
+    if (/iPhone/i.test(navigator.userAgent)) {
+      let tip = document.createElement('div');
+      tip.innerHTML = '不支持苹果手机';
+      document.body.appendChild(tip);
+    }
+  }catch(e){
+    console.log(e);
+  }
+</script>
+</html>
