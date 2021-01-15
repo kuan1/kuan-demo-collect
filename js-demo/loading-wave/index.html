@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>loading-wave</title>
+    <style>
+      .handpick .loading {
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      .handpick .loading h2 {
+        font-size: 125px;
+        font-weight: 700;
+        line-height: 95px;
+        color: transparent;
+      }
+      .handpick .loading span {
+        font-size: 72px;
+        line-height: 72px;
+      }
+
+      /*lading wave*/
+      .handpick .loading {
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      @-webkit-keyframes wave-animation {
+        0% {
+          background-position: 0 bottom;
+        }
+        100% {
+          background-position: 75px bottom;
+        }
+      }
+      @-moz-keyframes wave-animation {
+        0% {
+          background-position: 0 bottom;
+        }
+        100% {
+          background-position: 75px bottom;
+        }
+      }
+      @-webkit-keyframes loading-animation {
+        0% {
+          background-size: 75px 0px;
+        }
+        100% {
+          background-size: 75px 75px;
+        }
+      }
+      @-moz-keyframes loading-animation {
+        0% {
+          background-size: 75px 0px;
+        }
+        100% {
+          background-size: 75px 75px;
+        }
+      }
+      .handpick .wave {
+        background: -webkit-linear-gradient(transparent, transparent),
+          url('http://demo.themeum.com/wordpress/startupidea/wp-content/themes/startupidea/images/wave-bg.png');
+        -webkit-background-clip: text;
+        color: transparent;
+        text-shadow: 0px 0px rgba(1, 1, 1, 0.2) !important;
+        -webkit-animation: wave-animation 1s infinite linear, loading-animation 5s linear alternate;
+        -moz-animation: wave-animation 1s infinite linear, loading-animation 5s linear alternate;
+        background-repeat: repeat-x;
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 代码来自 https://codepen.io/marcofioravanti/pen/mXMPPG -->
+    <div class="handpick">
+      <div class="loading wave" style="background-size: 75px 102.2px">
+        <h2>73<span>%</span></h2>
+      </div>
+    </div>
+  </body>
+</html>
