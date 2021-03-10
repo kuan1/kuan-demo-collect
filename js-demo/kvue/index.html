@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kvue</title>
+</head>
+
+<body>
+  <h2>Kvue</h2>
+  <div id="app">
+    <p>a: {{a}} - {{a}}</p>
+    <p>b: {{b}}</p>
+    <div>c: {{c}}</div>
+  </div>
+
+  <p>
+    <button class="a-btn">修改a</button>
+    <button class="b-btn">修改b</button>
+    <button class="c-btn">修改c</button>
+  </p>
+
+  <script src="./Compile.js"></script>
+  <script src="./Kvue.js"></script>
+
+  <script>
+    const vue = new Kvue({
+      el: '#app',
+      data: {
+        a: 1,
+        b: 2,
+        c: 3
+      },
+      watch: {
+        a(a) {
+          console.log('a修改了', a)
+        }
+      },
+      created() {
+        console.log('实例化完成', this)
+      }
+    })
+
+    document.querySelector('.a-btn').onclick = () => {
+      vue.a++
+    }
+    document.querySelector('.b-btn').onclick = () => {
+      vue.b++
+    }
+    document.querySelector('.c-btn').onclick = () => {
+      vue.c++
+    }
+  </script>
+</body>
+
+</html>
