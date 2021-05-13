@@ -4,4 +4,4 @@ const reactiveMap = new WeakMap()
 // 保存响应对象和依赖的关系
 const targetMap = new WeakMap()
 
-let currentCb
+let currentb
