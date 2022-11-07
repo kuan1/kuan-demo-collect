@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则</title>
+</head>
+<body>
+<script>
+
+const attrValueReg = /((@\w+)|(v-on:\w+)|(v-model)(:\w+)?|(:\w+?))="(\w+)"/g
+const vueVariableReg = /\{\{(.*?)\}\}/g
+
+const str = `\
+<button 
+  :test3="test"
+  @click="test1"
+  v-on:touchstart="test4"
+  v-model:test="test3" 
+  v-model="test5"
+>{{test2}}</button>
+<button :test3="test" @click="test1">{{test2}}</button>`
+
+const replaceName = (str) => {
+  return {
+    test: '*****', 
+    test1: '*****', 
+    test2: '*****', 
+    test3: '*****', 
+    test4: "*****",
+    test5: "*****",
+  }[str] || str
+}
+
+const str2 = str
+    .replace(attrValueReg, (...args) => `${args[1]}="${replaceName(args[7])}"`)
+    .replace(vueVariableReg, (...args) => {
+      const oldName = args[1].trim()
+      const newName = replaceName(oldName)
+      return oldName == newName ? args[0] : `{{ ${newName} }}`
+    })
+
+console.log(str2)
+
+
+</script>
+</body>
+</html>

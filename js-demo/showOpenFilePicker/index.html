@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js写入文件</title>
+</head>
+<body>
+  <input type="text">
+  <button id='save'>写入</button>
+
+  <script>
+  let fileHandle
+
+  async function getFile() {
+    // open file picker
+    [fileHandle] = await window.showOpenFilePicker();
+    console.log('fileHandle', fileHandle)
+  }
+  document.querySelector('button').onclick = getFile
+
+  document.getElementById('save').onclick = async () => {
+    if (!fileHandle) {
+      await getFile()
+    }
+
+    // create a FileSystemWritableFileStream to write to
+    const writableStream = await fileHandle.createWritable();
+
+    // write our file
+    await writableStream.write(document.querySelector('input').value || '啥也没有');
+
+    // close the file and write the contents to disk.
+    await writableStream.close();
+    console.log('写入成功')
+  }
+
+  </script>
+</body>
+</html>
