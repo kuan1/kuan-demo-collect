@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .loading {
+      display: block;
+      width: 40px;
+      height: 40px;
+      color: #d3546e;
+      animation: loading 0.8s linear infinite;
+    }
+
+    .circle {
+      animation: circular 1.5s ease-in-out infinite;
+      stroke: currentColor;
+      stroke-width: 4;
+      stroke-linecap: round;
+    }
+
+    @keyframes loading {
+      from {
+        transform: rotate(0);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes circular {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+      }
+
+      50% {
+        stroke-dasharray: 52, 150;
+        stroke-dashoffset: 0;
+      }
+
+      100% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <svg viewBox="0 0 50 50" class="loading">
+    <circle class="circle" cx="25" cy="25" r="20" fill="none"></circle>
+    <circle class="circle" transform="rotate(180,25,25)" cx="25" cy="25" r="20" fill="none"></circle>
+  </svg>
+</body>
+
+</html>
